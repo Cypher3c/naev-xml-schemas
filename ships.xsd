@@ -7,14 +7,34 @@
     			<element name="base_type" type="string" maxOccurs="1"
     				minOccurs="1">
     			</element>
-    			<element name="GFX" type="string"></element>
+    			<element name="GFX">
+    				<complexType>
+    					<simpleContent>
+    						<extension base="string">
+    							<attribute name="sx" type="int"
+    								use="optional">
+    							</attribute>
+    							<attribute name="sy" type="int"
+    								use="optional">
+    							</attribute>
+    						</extension>
+    					</simpleContent>
+    				</complexType>
+    			</element>
     			<element name="GUI" type="string"></element>
     			<element name="sound" type="string"></element>
-    			<element name="class" type="string"></element>
+    			<element name="class" type="string" maxOccurs="1"
+    				minOccurs="1">
+    			</element>
     			<element name="price" type="int"></element>
     			<element name="fabricator" type="string"></element>
-    			<element name="license" type="string" maxOccurs="1" minOccurs="0"></element>
+    			<element name="license" type="string" maxOccurs="1"
+    				minOccurs="0">
+    			</element>
     			<element name="description" type="string"></element>
+    			<element name="mission" maxOccurs="1" minOccurs="0">
+    				<complexType></complexType>
+    			</element>
     			<element name="movement">
     				<complexType>
     					<sequence>
@@ -31,9 +51,9 @@
     						<element name="shield" type="int"></element>
     						<element name="armour" type="int"></element>
     						<element name="energy" type="int"></element>
-    						<element name="shield_regen" type="int">
+    						<element name="shield_regen" type="float">
     						</element>
-    						<element name="armour_regen" type="int">
+    						<element name="armour_regen" type="float">
     						</element>
     						<element name="energy_regen" type="float"></element>
     					</sequence>
@@ -58,10 +78,12 @@
     							<complexType>
     								<simpleContent>
     									<extension base="string">
-    									<attribute name="x" type="int">
-    								</attribute>
-    								<attribute name="y" type="int">
-    								</attribute>
+    										<attribute name="x"
+    											type="int">
+    										</attribute>
+    										<attribute name="y"
+    											type="int">
+    										</attribute>
     										<attribute name="h"
     											type="int">
     										</attribute>
@@ -69,11 +91,31 @@
     								</simpleContent>
     							</complexType>
     						</element>
-    						<element name="utility" type="string"
-    							minOccurs="0" maxOccurs="unbounded">
+    						<element name="utility" minOccurs="0"
+    							maxOccurs="unbounded">
+    							<complexType>
+    								<simpleContent>
+    									<extension base="string"></extension>
+    								</simpleContent>
+    							</complexType>
     						</element>
     						<element name="structure" type="string"
     							minOccurs="0" maxOccurs="unbounded">
+    						</element>
+    					</sequence>
+    				</complexType>
+    			</element>
+    			<element name="stats" maxOccurs="1" minOccurs="0">
+    				<complexType>
+    					<sequence>
+    						<element name="fwd_energy" type="int"
+    							maxOccurs="1" minOccurs="0">
+    						</element>
+    						<element name="launch_rate" type="int"
+    							maxOccurs="1" minOccurs="0">
+    						</element>
+    						<element name="launch_range" type="int"
+    							maxOccurs="1" minOccurs="0">
     						</element>
     					</sequence>
     				</complexType>
