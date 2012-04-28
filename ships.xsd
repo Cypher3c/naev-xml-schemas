@@ -2,10 +2,14 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/ships" elementFormDefault="qualified">
 
     <element name="ship">
-    	<complexType>
+        <annotation>
+        	<documentation>The 'name' field is the ship's name. This is the name that will show up in the game, and it is also the name used to reference the ship in fleet definitions. </documentation></annotation>
+        <complexType>
     		<sequence>
     			<element name="base_type" type="string" maxOccurs="1"
     				minOccurs="1">
+                    <annotation>
+                    	<documentation>This is the base type of the ship. Ships that share the same base type are considered to be different models of the same basic design. This information can be used in mission and event scripts. </documentation></annotation>
     			</element>
     			<element name="GFX">
     				<complexType>
@@ -99,27 +103,52 @@
     								</simpleContent>
     							</complexType>
     						</element>
-    						<element name="structure" type="string"
-    							minOccurs="0" maxOccurs="unbounded">
+    						<element name="structure" minOccurs="0"
+    							maxOccurs="unbounded">
+    							<complexType>
+    								<simpleContent>
+    									<extension base="string"></extension>
+    								</simpleContent>
+    							</complexType>
     						</element>
     					</sequence>
     				</complexType>
     			</element>
     			<element name="stats" maxOccurs="1" minOccurs="0">
-    				<complexType>
-    					<sequence>
-    						<element name="fwd_energy" type="int"
-    							maxOccurs="1" minOccurs="0">
-    						</element>
-    						<element name="launch_rate" type="int"
-    							maxOccurs="1" minOccurs="0">
-    						</element>
-    						<element name="launch_range" type="int"
-    							maxOccurs="1" minOccurs="0">
-    						</element>
-    					</sequence>
-    				</complexType>
-    			</element>
+  <complexType>
+    <choice minOccurs="0" maxOccurs="unbounded">
+      <element name="speed_mod" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="turn_mod" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="thrust_mod" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="cargo_mod" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="armour_mod" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="armour_regen_mod" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="shield_mod" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="shield_regen_mod" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="jump_delay" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="cargo_inertia" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="ew_hide" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="ew_detect" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="ew_jump_detect" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="heat_dissipation" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="launch_rate" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="launch_range" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="ammo_capacity" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="launch_lockon" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="fwd_heat" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="fwd_damage" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="fwd_firerate" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="fwd_energy" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="tur_heat" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="tur_damage" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="tur_firerate" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="tur_energy" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="nebula_dmg_shield" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="nebula_dmg_armour" type="float" minOccurs="0" maxOccurs="1"/>
+      <element name="misc_instant_jump" type="int" minOccurs="0" maxOccurs="1"/>
+    </choice>
+  </complexType>
+</element>
     		</sequence>
     		<attribute name="name" type="string" use="required"></attribute>
     	</complexType>
