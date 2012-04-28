@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/outfits">
+
+    <element name="outfit">
+    	<complexType>
+    		<sequence>
+    			<element name="general">
+    				<complexType>
+    					<sequence>
+    						<element name="slot" type="string"
+    							minOccurs="1" maxOccurs="1">
+    						</element>
+    						<element name="size" type="string"
+    							minOccurs="0" maxOccurs="1">
+    						</element>
+    						<element name="license" type="string"
+    							minOccurs="0" maxOccurs="1">
+    						</element>
+    						<element name="mass" type="float"
+    							minOccurs="1" maxOccurs="1">
+    						</element>
+    						<element name="price" type="float"
+    							minOccurs="1" maxOccurs="1">
+    						</element>
+    						<element name="description" type="string"
+    							minOccurs="0" maxOccurs="1">
+    						</element>
+    						<element name="gfx_store" type="string" minOccurs="0" maxOccurs="1"></element>
+    						<element name="limit" type="string"
+    							minOccurs="0" maxOccurs="1">
+    						</element>
+    					</sequence>
+    				</complexType>
+    			</element>
+    		</sequence>
+    		<attribute name="name" type="string"
+    			use="required">
+    		</attribute>
+    	</complexType>
+    </element>
+</schema>
